@@ -72,7 +72,7 @@ Cada entrada tem: **contexto**, **opções consideradas**, **escolha**, **motivo
 
 ## Jira (via MCP da Atlassian)
 
-1. **Filtro por JQL:** projeto IDD, sem responsável, status "Tarefas pendentes".
+1. **Filtro por JQL:** projeto IDD, sem responsável, status "Tarefas pendentes" (na JQL, use o id: `status = 10023`; o nome não é aceito).
 2. **Julgamento pelo modelo:** a task é de backend (independente da label)? Pode ser feita sem VDI ou outra restrição? Algumas restrições são substituíveis (mock, docker, dado local) e outras são impeditivas. Essa avaliação acontece no `/th-hunt` e segue `rules/exclusion-signals.md`.
 3. **Ao iniciar uma task:** atribuir ao José e mudar o status de "Tarefas pendentes" para "Em desenvolvimento". Isso é feito pelo núcleo **antes** de disparar o subagente.
 
@@ -94,8 +94,8 @@ O agente não comenta no ticket e não faz nenhuma outra transição de status.
 
 ## Pendências de definição
 
-- [ ] **Sinais de exclusão** (`rules/exclusion-signals.md`). Rascunho: menção a VDI; credenciais ou acesso ao ambiente do cliente; link "is blocked by" aberto; dependência de outro time ou de contrato de API externo; hardware ou ambiente físico. Marcar cada sinal como substituível ou impeditivo.
-- [ ] **Rubrica de ranking** (`rules/ranking-rubric.md`). Rascunho de critérios: prioridade no Jira, sprint atual, se desbloqueia outras tasks, clareza da descrição, tamanho estimado e idade do ticket. Falta definir pesos e desempate.
+- [x] **Sinais de exclusão** (`rules/exclusion-signals.md`). Todos impeditivos, exceto dependências que sobem localmente com docker (substituível). O Docker fica disponível para o agente, só para recursos locais.
+- [x] **Rubrica de ranking** (`rules/ranking-rubric.md`). Pesos: sprint 4, prioridade 4, desbloqueio 4, clareza 3, tamanho 2, idade 4. Desempate pela task mais antiga.
 - [ ] **Condições de parada** (`rules/stop-conditions.md`). Rascunho: descrição ambígua demais; escopo acima do limite; mudança de schema ou migration; contrato de API com outro time; testes que não rodam localmente.
 - [ ] **Convenções do dell-ddm.** Levantar o padrão de nome de branch, a mensagem de commit com o ID da task, o template de PR e o comando da suíte de testes.
 - [ ] **Instalação das skills.** Decidir entre symlink em `~/.claude/skills/` e cópia para o dell-ddm.

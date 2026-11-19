@@ -1,6 +1,7 @@
 # Ranking do Task-Hunter
 
-Gerado em: {{data}} · JQL: `project = IDD AND assignee IS EMPTY AND status = "Tarefas pendentes"`
+Gerado em: {{data}} · JQL: `project = IDD AND assignee IS EMPTY AND status = 10023 ORDER BY created ASC` (10023 = "Tarefas pendentes")
+Total retornado: {{n}} · Candidatas: {{n}} · Excluídas: {{n}} · Não backend: {{n}}
 Rubrica: `rules/ranking-rubric.md` · Sinais de exclusão: `rules/exclusion-signals.md`
 
 ## Candidatas
