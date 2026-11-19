@@ -1,0 +1,5 @@
+# Estado local do Task-Hunter (nunca versionar)
+.task-hunter/
+
+# Configuração pessoal do Claude Code
+.claude/settings.local.json
